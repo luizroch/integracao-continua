@@ -9,6 +9,7 @@ on: #esse wokflow executa com o push e o pull_requets
   pull_request:
     paths:
       - 'back-end/**' #ou quando faz um pull no back end
+  workflow_call: #ou quando é chamado de outro workflow
   
 jobs:
   testes:
