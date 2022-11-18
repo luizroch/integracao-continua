@@ -1,11 +1,14 @@
 name: CI Back-end
 
-on:
+on: #esse wokflow executa com o push e o pull_requets
   push:
     branches:
-      - 'main'
+      - 'main' #ou quando faz um push direto no main
     paths:
       - 'back-end/**'
+  pull_request:
+    paths:
+      - 'back-end/**' #ou quando faz um pull no back end
   
 jobs:
   testes:
