@@ -19,10 +19,10 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v3
         with:
-          node-version: '12.x'
-      - name: Compilação / Test / Package
+          node-version: 16
+      - name: Deus me ajuda
         working-directory: front-end/
-        run: npm test
+        run: npm install
   criar:
     needs: testes #fala que só roda com o de cima
     runs-on: ubuntu-latest
@@ -35,3 +35,7 @@ jobs:
       - name: Compilação / Test / Package
         working-directory: front-end/
         run: npm run build --prod
+        
+      - name: Deploy
+        working-directory: front-end/dist/sgcmapp
+        run: railway up --detach --service front-app
