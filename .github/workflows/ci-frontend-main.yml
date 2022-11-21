@@ -1,0 +1,37 @@
+name: CI Front-End
+
+on: #esse wokflow executa com o push e o pull_requets
+  push:
+    branches:
+      - 'main' #ou quando faz um push direto no main
+    paths:
+      - 'front-end/**'
+  pull_request:
+    paths:
+      - 'front-end/**' #ou quando faz um pull no front end
+  workflow_call: #ou quando é chamado de outro workflow
+  
+jobs:
+  testes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '12.x'
+      - name: Compilação / Test / Package
+        working-directory: front-end/
+        run: npm test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+  criar:
+    needs: testes #fala que só roda com o de cima
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '12.x'
+      - name: Compilação / Test / Package
+        working-directory: front-end/
+        run: npm run build --prod
