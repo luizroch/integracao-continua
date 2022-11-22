@@ -23,18 +23,7 @@ jobs:
       - name: Install
         working-directory: front-end/
         run: npm install
-  criar:
-    needs: testes #fala que só roda com o de cima
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Setup node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-      - name: Install
-        working-directory: front-end/
-        run: npm install
+        
       - name: Compilar
         working-directory: front-end/
         run: npm run build --prod
