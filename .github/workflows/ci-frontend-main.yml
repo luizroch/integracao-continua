@@ -20,7 +20,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-      - name: Deus me ajuda
+      - name: Install
         working-directory: front-end/
         run: npm install
   criar:
@@ -32,10 +32,13 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-      - name: Compilação / Test / Package
+      - name: Install
+        working-directory: front-end/
+        run: npm install
+      - name: Compilar
         working-directory: front-end/
         run: npm run build --prod
         
-      - name: Deploy
+      - name: testar?
         working-directory: front-end/dist/sgcmapp
         run: railway up --detach --service front-app
