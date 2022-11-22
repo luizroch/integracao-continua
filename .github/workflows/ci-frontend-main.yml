@@ -23,7 +23,7 @@ jobs:
           node-version: '16'
       - name: Instalação de dependências
         working-directory: front-end/
-        run: npm clean install
+        run: npm install
       - name: Test
         working-directory: front-end/
         run: npm test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
@@ -38,7 +38,7 @@ jobs:
           node-version: '16'
       - name: Instalação de dependências
         working-directory: front-end/
-        run: npm clean install
+        run: npm install
       - name: build
         working-directory: front-end/
         run: npm run build --prod
